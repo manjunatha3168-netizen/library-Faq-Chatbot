@@ -12,7 +12,7 @@ const firebaseConfig = {
     storageBucket: "", 
     messagingSenderId: "", 
     appId: "", 
-    databaseURL: "};
+databaseURL: ""};
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 let libraryData = [];
