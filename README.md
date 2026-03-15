@@ -1,4 +1,5 @@
 # 🤖 Library FAQ Chatbot
+![Chatbot Preview](faq-chatbot.png)  
 
 A **rule-based automated FAQ assistant** designed for academic and institutional libraries.  
 This chatbot helps users quickly find answers to common library questions using **keyword matching** powered by **Firebase Realtime Database**.
