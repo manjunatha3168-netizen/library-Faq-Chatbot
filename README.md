@@ -1,87 +1,110 @@
-🤖 Library FAQ Chatbot
+# 🤖 Library FAQ Chatbot
 
-A rule-based automated FAQ assistant designed for academic and institutional libraries.
-This chatbot helps users quickly find answers to common library questions through keyword-based matching powered by Firebase Realtime Database.
+A **rule-based automated FAQ assistant** designed for academic and institutional libraries.  
+This chatbot helps users quickly find answers to common library questions using **keyword matching** powered by **Firebase Realtime Database**.
 
-It provides an interactive chat interface, a browsable FAQ list, and multi-channel librarian contact options.
+It provides an **interactive chat interface**, a **browsable FAQ list**, and **multi-channel librarian contact options**.
 
-✨ Features
+---
 
-🔎 Live FAQ Search
-Instantly filter and retrieve answers from the library knowledge base.
+## ✨ Features
 
-🤖 Rule-Based Chatbot
-Keyword matching provides quick automated responses to user queries.
+- 🔎 **Live FAQ Search**  
+  Instantly filter and retrieve answers from the library knowledge base.
 
-💬 Dual Interaction Interface
+- 🤖 **Rule-Based Chatbot**  
+  Keyword matching provides quick automated responses to user queries.
 
-Chat-based question interface
+- 💬 **Dual Interaction Interface**
+  - Chat-based question interface  
+  - Browsable FAQ list
 
-Browsable FAQ list
+- 📱 **Responsive Design**  
+  Fully mobile-friendly UI optimized for students and library users.
 
-📱 Responsive Design
-Fully mobile-friendly UI optimized for students and library users.
+- 📞 **Contact Librarian Fallback**
+  When no answer is found, users can contact the librarian via:
+  - WhatsApp
+  - Email
 
-📞 Contact Librarian Fallback
-When no answer is found, users can contact the librarian via:
+- ☁️ **Cloud Database Integration**  
+  Uses Firebase Realtime Database to store and manage FAQ data.
 
-WhatsApp
+---
 
-Email
+## 🛠️ Tech Stack
 
-☁️ Cloud Database Integration
-Uses Firebase Realtime Database to store and manage FAQ data.
+| Technology | Purpose |
+|---|---|
+| HTML5 | Application structure |
+| CSS3 (Custom Properties) | Responsive UI styling |
+| JavaScript (ES6+) | Chatbot logic & interaction |
+| Firebase Realtime Database | FAQ data storage |
+| Firebase Hosting | Deployment |
+| Google Fonts (Poppins) | Typography |
 
-🛠️ Tech Stack
-Technology	Purpose
-HTML5	Structure of the application
-CSS3 (Custom Properties)	Responsive UI styling
-JavaScript (ES6+)	Chatbot logic & interaction
-Firebase Realtime Database	FAQ data storage
-Firebase Hosting	Deployment
-Google Fonts – Poppins	Typography
-⚙️ How It Works
+---
 
-The chatbot connects to Firebase Realtime Database where the library's FAQ knowledge base is stored.
+## ⚙️ How It Works
 
-When a user enters a question:
+1. The chatbot connects to **Firebase Realtime Database** where the library's **FAQ knowledge base** is stored.
+2. When a user types a question:
+   - The script scans the database
+   - Matches keywords from the query
+3. The most relevant answer is displayed instantly in the chat interface.
 
-The script scans the database
+---
 
-Matches keywords from the query
+# 📖 Installation Guide
 
-The most relevant answer is displayed instantly in the chat interface.
+Follow these steps to set up, secure, and deploy your own Library FAQ Assistant.
 
-📖 Installation Guide
-1️⃣ Create a Firebase Project
+---
 
-Go to the Firebase Console.
+## Step 1 — Firebase Project Setup
 
-Click Add Project.
+1. Go to the **Firebase Console**  
+2. Click **Add Project**  
+3. Name your project:
 
-Name it Library-Faq-Chatbot.
+```
+Library-Faq-Chatbot
+```
 
-Register a Web App (</> icon).
+4. In **Project Overview**, click the **Web App icon (</>)**
+5. Register the app
+6. Copy the **firebaseConfig** object
 
-Copy the firebaseConfig object.
+You will need this configuration in **Step 3**.
 
-2️⃣ Initialize the Realtime Database
+---
 
-Navigate to Build → Realtime Database.
+## Step 2 — Database Initialization
 
-Click Create Database.
+1. Go to:
 
-Choose your preferred region.
+```
+Build → Realtime Database
+```
 
-Start in Test Mode.
+2. Click **Create Database**
+3. Choose your preferred location
+4. Start in **Test Mode**
+5. Import your FAQ JSON file or create a node:
 
-Import FAQ JSON data or create a node:
-
+```
 library_faqs
-3️⃣ Project Setup
+```
 
-Create the following folder structure:
+---
 
+## Step 3 — Local Environment Setup
+
+1. Clone this repository or create a new project folder.
+
+2. Create the following folder structure:
+
+```
 Library-Faq-Chatbot
 │
 ├── public
@@ -92,58 +115,112 @@ Library-Faq-Chatbot
 ├── firebase.json
 ├── .gitignore
 └── README.md
+```
 
-Inside script.js, paste your firebaseConfig.
+3. Place your **HTML, CSS, and JS files** inside the `public` folder.
 
-4️⃣ Install Firebase CLI
+4. Open `script.js` and paste your **firebaseConfig** from Step 1.
 
-Install Firebase tools globally:
+---
 
+## Step 4 — Install Firebase CLI
+
+Open your terminal or command prompt and run:
+
+```bash
 npm install -g firebase-tools
+```
 
-Login to Firebase:
+Then login to your Firebase account:
 
+```bash
 firebase login
-5️⃣ Initialize Firebase Hosting
+```
 
-Run:
+---
 
+## Step 5 — Initialize Firebase
+
+Inside your project folder run:
+
+```bash
 firebase init
+```
 
-Select:
+Choose the following options:
 
-Hosting
+- Select **Hosting**
+- Choose **Use an existing project**
+- Select your **Library-Faq-Chatbot** project
+- Set the **public directory** to:
 
-Configuration options:
+```
+public
+```
 
-Setting	Value
-Project	Existing Project
-Public Directory	public
-Single Page App	Yes
-Overwrite index.html	No
-6️⃣ Secure API Keys (GitHub Safety)
+- Configure as **Single Page App**
 
-Create a .gitignore file:
+```
+Yes
+```
 
+- When asked to overwrite `index.html`
+
+```
+Type N (No)
+```
+
+---
+
+## Step 6 — Secure Your Keys (GitHub Safety)
+
+Create a `.gitignore` file in your project root.
+
+Add the following:
+
+```
 config.js
 .env
 node_modules
+```
 
-Replace sensitive Firebase values with placeholders in public repositories:
+If you plan to make the project **public on GitHub**, replace real keys with placeholders:
 
+```
 YOUR_API_KEY_HERE
-7️⃣ Deploy to Firebase Hosting
+```
 
-Deploy the project:
+---
 
+## Step 7 — Deploy to Firebase Hosting
+
+Run the following command:
+
+```bash
 firebase deploy --only hosting
+```
 
-Firebase will generate a live hosting URL.
+After deployment, Firebase will generate a **Hosting URL**.
 
-8️⃣ Apply Database Security Rules
+Example:
 
-In Realtime Database → Rules, add:
+```
+https://library-faq-chatbot.web.app
+```
 
+---
+
+## Step 8 — Set Database Security Rules
+
+Go to:
+
+```
+Realtime Database → Rules
+```
+
+Paste the following rules:
+
+```json
 {
   "rules": {
     "library_faqs": {
@@ -152,51 +229,69 @@ In Realtime Database → Rules, add:
     }
   }
 }
+```
 
-This allows public reading while restricting write access.
+This allows:
+- Public **read access**
+- Restricted **write access**
 
-📂 Project Structure
+---
+
+# 📂 Project Structure
+
+```
 Library-Faq-Chatbot
 │
 ├── public/
-│   ├── index.html      # Chat interface and FAQ UI
-│   ├── style.css       # Responsive styling
-│   └── script.js       # Chatbot logic & Firebase integration
+│   ├── index.html      # Main UI and Chat Interface
+│   ├── style.css       # Responsive Styling
+│   └── script.js       # Chatbot Logic & Firebase Integration
 │
-├── firebase.json       # Firebase hosting configuration
-├── .gitignore          # Ignore secrets and dependencies
+├── firebase.json       # Hosting Configuration
+├── .gitignore          # Hidden files and secrets
 └── README.md           # Project documentation
-🎯 Use Cases
+```
 
-This chatbot is ideal for:
+---
 
-Academic Libraries
+# 🎯 Use Cases
 
-College Help Desks
+This project is suitable for:
 
-Digital Library Portals
+- Academic Libraries
+- College Help Desks
+- Digital Library Portals
+- Student Self-Service Systems
+- Institutional FAQ Assistants
 
-Student Self-Service Systems
+---
 
-🔮 Future Improvements
+# 🔮 Future Improvements
 
-NLP-based query matching
+Possible upgrades for the chatbot:
 
-Admin dashboard for FAQ management
+- NLP-based query matching
+- Admin dashboard for FAQ management
+- User query analytics
+- Voice input support
+- Multi-language support
+- AI-powered response suggestions
 
-Analytics for user queries
+---
 
-Voice input support
+# ⚖️ License
 
-Multi-language support
+This project is licensed under the **GPL-3.0 License**.
 
-⚖️ License
+---
 
-This project is licensed under the GPL-3.0 License.
+# 👤 Author
 
-👤 Author
+**Manjunatha A**  
+Library Assistant | Web Developer | Tech Curator  
 
-Manjunatha A
-Library Assistant | Web Developer | Tech Curator
+Specializing in **Digital Transformation and Automated Library Services**.
 
-Specializing in Digital Transformation and Automated Library Services.
+---
+
+⭐ If you find this project useful, please **star the repository** on GitHub.
