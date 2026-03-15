@@ -13,21 +13,38 @@ const firebaseConfig = {
     storageBucket: "your-app.appspot.com",
     messagingSenderId: "123456789",
     appId: "1:123456789:web:abcdef12345"
-
 };
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+
 let libraryData = [];
 
-db.ref('library_faqs').on('value', (snap) => {
-    const data = snap.val();
-    if(data) { 
-        libraryData = Object.entries(data).map(([key, val]) => ({ 
-            id: key, q: val.q, a: val.a, k: val.k 
-        })); 
-        renderFAQList(); 
-    }
-});
+if (firebaseConfig.apiKey === "YOUR_API_KEY_HERE") {
+    console.log(" Running in Demo Mode (GitHub Pages)");
+    
+    libraryData = [
+        { id: "1", q: "What are the library timings?", a: "The library is open from 8:00 AM to 8:00 PM, Monday to Saturday.", k: "time,hours,open,close" },
+        { id: "2", q: "How many books can I borrow?", a: "UG students can borrow 3 books, and PG students can borrow 5 books for 15 days.", k: "borrow,limit,books,issue" },
+        { id: "3", q: "Is Wi-Fi available?", a: "Yes, high-speed Wi-Fi is available. Contact the help desk for the password.", k: "wifi,internet,network" },
+        { id: "4", q: "How to renew books?", a: "Books can be renewed once if there are no pending reservations.", k: "renew,extend,book" }
+    ];
+
+    window.addEventListener('load', () => {
+        renderFAQList();
+    });
+
+} else {
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    db.ref('library_faqs').on('value', (snap) => {
+        const data = snap.val();
+        if(data) { 
+            libraryData = Object.entries(data).map(([key, val]) => ({ 
+                id: key, q: val.q, a: val.a, k: val.k 
+            })); 
+            renderFAQList(); 
+        }
+    });
+}
+
 function appendMsg(content, type, showFeedback = false) {
     const chat = document.getElementById("chat");
     const row = document.createElement("div");
@@ -74,6 +91,7 @@ function send() {
     input.value = ""; 
     document.getElementById("suggestion-container").style.display = "none";
 }
+
 function matchAndReply(input) {
     const userText = input.toLowerCase().trim();
     const greetings = ["hi", "hello", "hey", "hai", "hlo", "greetings", "good morning", "good afternoon", "good evening", "what's up", "yo", "sup", "howdy", "namaste", "salaam"];
@@ -129,6 +147,7 @@ function switchTab(tab) {
 
 function renderFAQList(filteredData = libraryData) {
     const list = document.getElementById('faq-list');
+    if(!list) return;
     list.innerHTML = "";
     filteredData.forEach(item => {
         const div = document.createElement('div');
@@ -143,6 +162,7 @@ function filterFAQs() {
     const filtered = libraryData.filter(item => item.q.toLowerCase().includes(query) || (item.k && item.k.toLowerCase().includes(query)));
     renderFAQList(filtered);
 }
+
 function showLiveSuggestions() {
     const val = document.getElementById("msg").value.toLowerCase().trim();
     const box = document.getElementById("suggestion-container");
@@ -158,5 +178,5 @@ function selectSuggestion(q) { document.getElementById("msg").value = q; documen
 function endChat() { document.getElementById('chat').innerHTML = ""; botResponse("Session refreshed. How can I help you?", false); }
 
 window.onload = () => {
-    botResponse("Welcome to the KCW Library Information Center. You may enter your inquiry below for assistance.", false);
+    botResponse("Welcome to the  Library Information Center. You may enter your inquiry below for assistance.", false);
 };
