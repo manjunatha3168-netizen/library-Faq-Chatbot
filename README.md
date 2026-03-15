@@ -283,6 +283,9 @@ Possible upgrades for the chatbot:
 
 This project is licensed under the **GPL-3.0 License**.
 
+# 🔗 Quick Links
+- 🚀 **Live Demo:** [View the Chatbot Live](https://library-faq-chatbot.web.app)
+
 ---
 
 # 👤 Author
