@@ -1,73 +1,149 @@
-# 🤖 Library FAQ Chatbot
-A rule-based automated FAQ assistant for library support, integrated with Firebase Realtime Database.
+🤖 Library FAQ Chatbot
 
-## ✨ Features
-* **Live FAQ Search:** Instantly filter common library questions.
-* **Smart Interaction:** Rule-based keyword matching for intuitive responses.
-* **Dual Interface:** Dedicated tabs for direct Chat and a browsable FAQ list.
-* **Multi-Channel Support:** Built-in "Contact Librarian" fallback via WhatsApp and Email.
-* **Responsive Design:** Mobile-friendly UI optimized for student use on the go.
+A rule-based automated FAQ assistant designed for academic and institutional libraries.
+This chatbot helps users quickly find answers to common library questions through keyword-based matching powered by Firebase Realtime Database.
 
-## 🛠️ Tech Stack
-* **Frontend:** HTML5, CSS3 (Custom Properties), JavaScript (ES6+)
-* **Database:** Firebase Realtime Database
-* **Hosting:** Firebase Hosting
-* **Fonts:** Poppins (via Google Fonts)
+It provides an interactive chat interface, a browsable FAQ list, and multi-channel librarian contact options.
 
-## 🚀 How It Works
-The assistant connects to a Firebase Realtime Database where the library's "Knowledge Base" is stored. When a user types a query, the script matches keywords against the database entries to provide the most relevant answer.
+✨ Features
 
----
+🔎 Live FAQ Search
+Instantly filter and retrieve answers from the library knowledge base.
 
-## 📖 Installation Guide
-Follow these steps to set up, secure, and deploy your own Library FAQ Assistant.
+🤖 Rule-Based Chatbot
+Keyword matching provides quick automated responses to user queries.
 
-### Step 1 — Firebase Project Setup
-1. Go to the [Firebase Console](https://console.firebase.google.com/).
-2. Click **Add Project** and name it `Library-Faq-Chatbot`.
-3. In the Project Overview, click the **Web icon (`</>`)** to register your app.
-4. Copy the `firebaseConfig` object (you will need this for Step 3).
+💬 Dual Interaction Interface
 
-### Step 2 — Database Initialization
-1. In the left sidebar, go to **Build > Realtime Database**.
-2. Click **Create Database** and choose your location.
-3. Start in **Test Mode** (we will secure it in Step 8).
-4. Import your JSON data or create a node named `library_faqs`.
+Chat-based question interface
 
-### Step 3 — Local Environment Setup
-1. Clone this repository or create a new folder on your computer.
-2. Inside the folder, create a sub-folder named `public`.
-3. Place your `index.html`, `style.css`, and `script.js` inside the `public` folder.
-4. **Important:** Open `script.js` and paste your `firebaseConfig` from Step 1.
+Browsable FAQ list
 
-### Step 4 — Install Firebase CLI
-1. Open your terminal/command prompt.
-2. Install the Firebase tools globally:  
-   `npm install -g firebase-tools`
-3. Login to your account:  
-   `firebase login`
+📱 Responsive Design
+Fully mobile-friendly UI optimized for students and library users.
 
-### Step 5 — Initialize Firebase
-1. Run `firebase init` in your project root.
-2. Select **Hosting** (Spacebar to select, Enter to confirm).
-3. Choose **Use an existing project** and select your project name.
-4. Set `public` as your public directory.
-5. Configure as a **single-page app** (Yes).
-6. **Crucial:** When asked to overwrite `index.html`, type **N** (No).
+📞 Contact Librarian Fallback
+When no answer is found, users can contact the librarian via:
 
-### Step 6 — Secure Your Keys (GitHub Safety)
-1. Create a `.gitignore` file in your root folder.
-2. Add `config.js` or any file containing your private API keys to this file.
-3. For the public GitHub version, replace your real keys in `script.js` with placeholders like `YOUR_API_KEY_HERE`.
+WhatsApp
 
-### Step 7 — Deploy to Live URL
-1. In your terminal, run:  
-   `firebase deploy --only hosting`
-2. Once finished, copy the **Hosting URL** provided in the terminal.
+Email
 
-### Step 8 — Set Security Rules
-Go to **Realtime Database > Rules** and paste the following to protect your data:
-```json
+☁️ Cloud Database Integration
+Uses Firebase Realtime Database to store and manage FAQ data.
+
+🛠️ Tech Stack
+Technology	Purpose
+HTML5	Structure of the application
+CSS3 (Custom Properties)	Responsive UI styling
+JavaScript (ES6+)	Chatbot logic & interaction
+Firebase Realtime Database	FAQ data storage
+Firebase Hosting	Deployment
+Google Fonts – Poppins	Typography
+⚙️ How It Works
+
+The chatbot connects to Firebase Realtime Database where the library's FAQ knowledge base is stored.
+
+When a user enters a question:
+
+The script scans the database
+
+Matches keywords from the query
+
+The most relevant answer is displayed instantly in the chat interface.
+
+📖 Installation Guide
+1️⃣ Create a Firebase Project
+
+Go to the Firebase Console.
+
+Click Add Project.
+
+Name it Library-Faq-Chatbot.
+
+Register a Web App (</> icon).
+
+Copy the firebaseConfig object.
+
+2️⃣ Initialize the Realtime Database
+
+Navigate to Build → Realtime Database.
+
+Click Create Database.
+
+Choose your preferred region.
+
+Start in Test Mode.
+
+Import FAQ JSON data or create a node:
+
+library_faqs
+3️⃣ Project Setup
+
+Create the following folder structure:
+
+Library-Faq-Chatbot
+│
+├── public
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── firebase.json
+├── .gitignore
+└── README.md
+
+Inside script.js, paste your firebaseConfig.
+
+4️⃣ Install Firebase CLI
+
+Install Firebase tools globally:
+
+npm install -g firebase-tools
+
+Login to Firebase:
+
+firebase login
+5️⃣ Initialize Firebase Hosting
+
+Run:
+
+firebase init
+
+Select:
+
+Hosting
+
+Configuration options:
+
+Setting	Value
+Project	Existing Project
+Public Directory	public
+Single Page App	Yes
+Overwrite index.html	No
+6️⃣ Secure API Keys (GitHub Safety)
+
+Create a .gitignore file:
+
+config.js
+.env
+node_modules
+
+Replace sensitive Firebase values with placeholders in public repositories:
+
+YOUR_API_KEY_HERE
+7️⃣ Deploy to Firebase Hosting
+
+Deploy the project:
+
+firebase deploy --only hosting
+
+Firebase will generate a live hosting URL.
+
+8️⃣ Apply Database Security Rules
+
+In Realtime Database → Rules, add:
+
 {
   "rules": {
     "library_faqs": {
@@ -77,26 +153,50 @@ Go to **Realtime Database > Rules** and paste the following to protect your data
   }
 }
 
+This allows public reading while restricting write access.
 
-## 📂 Project Structure
-```text
-/Library-Faq-Chatbot
+📂 Project Structure
+Library-Faq-Chatbot
+│
 ├── public/
-│   ├── index.html    # Main UI and Chat Interface
-│   ├── style.css     # Responsive Styling
-│   └── script.js     # Logic & Firebase Integration
-├── firebase.json     # Hosting Configuration
-├── .gitignore        # Hidden files and secrets
-└── README.md         # Documentation
+│   ├── index.html      # Chat interface and FAQ UI
+│   ├── style.css       # Responsive styling
+│   └── script.js       # Chatbot logic & Firebase integration
+│
+├── firebase.json       # Firebase hosting configuration
+├── .gitignore          # Ignore secrets and dependencies
+└── README.md           # Project documentation
+🎯 Use Cases
 
+This chatbot is ideal for:
+
+Academic Libraries
+
+College Help Desks
+
+Digital Library Portals
+
+Student Self-Service Systems
+
+🔮 Future Improvements
+
+NLP-based query matching
+
+Admin dashboard for FAQ management
+
+Analytics for user queries
+
+Voice input support
+
+Multi-language support
 
 ⚖️ License
+
 This project is licensed under the GPL-3.0 License.
 
 👤 Author
-MANJUNATHA A Library Assistant | Web Developer | Tech Curator Specializing in Digital Transformation and Automated Library Services.
 
+Manjunatha A
+Library Assistant | Web Developer | Tech Curator
 
-
-
-
+Specializing in Digital Transformation and Automated Library Services.
