@@ -67,7 +67,6 @@ Follow these steps to set up, secure, and deploy your own Library FAQ Assistant.
 
 ### Step 8 — Set Security Rules
 Go to **Realtime Database > Rules** and paste the following to protect your data:
-
 ```json
 {
   "rules": {
@@ -79,6 +78,8 @@ Go to **Realtime Database > Rules** and paste the following to protect your data
 }
 
 
+## 📂 Project Structure
+```text
 /Library-Faq-Chatbot
 ├── public/
 │   ├── index.html    # Main UI and Chat Interface
@@ -94,10 +95,6 @@ This project is licensed under the GPL-3.0 License.
 
 👤 Author
 MANJUNATHA A Library Assistant | Web Developer | Tech Curator Specializing in Digital Transformation and Automated Library Services.
-
-
-
-
 
 
 
